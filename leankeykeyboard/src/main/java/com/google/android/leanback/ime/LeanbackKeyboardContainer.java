@@ -179,7 +179,7 @@ public class LeanbackKeyboardContainer {
         mOverestimate = mContext.getResources().getFraction(R.fraction.focused_scale, 1, 1);
         final float scale = context.getResources().getFraction(R.fraction.clicked_scale, 1, 1);
         mClickAnimDur = context.getResources().getInteger(R.integer.clicked_anim_duration);
-        mSelectorAnimator = ValueAnimator.ofFloat(new float[]{1.0F, scale});
+        mSelectorAnimator = ValueAnimator.ofFloat(1.0F, scale);
         mSelectorAnimator.setDuration((long) mClickAnimDur);
         mSelectorAnimator.addUpdateListener(new AnimatorUpdateListener() {
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -872,14 +872,14 @@ public class LeanbackKeyboardContainer {
             onToggleCapsLock();
             setTouchState(LeanbackKeyboardContainer.TOUCH_STATE_NO_TOUCH);
             return true;
-        } else if (keyCode == LeanbackKeyboardView.ASCII_SPACE) {
+        } else if (keyCode == LeanbackKeyboardView.ASCII_SPACE || keyCode == LeanbackKeyboardView.KEYCODE_LANG_TOGGLE) {
             onLangKeyPress();
             setTouchState(LeanbackKeyboardContainer.TOUCH_STATE_NO_TOUCH);
             return true;
-        } else if (keyCode == LeanbackKeyboardView.KEYCODE_LANG_TOGGLE) {
-            // NOTE: normal constructor cannot be applied here
-            new ChooseKeyboardDialog(mContext, mMainKeyboardView).run();
-            return true;
+//        } else if (keyCode == LeanbackKeyboardView.KEYCODE_LANG_TOGGLE) {
+//             NOTE: normal constructor cannot be applied here
+//            new ChooseKeyboardDialog(mContext, mMainKeyboardView).run();
+//            return true;
         } else {
             if (mCurrKeyInfo.type == KeyFocus.TYPE_MAIN) {
                 mMainKeyboardView.onKeyLongPress();
@@ -1093,14 +1093,11 @@ public class LeanbackKeyboardContainer {
                 }
                 break;
             case TOUCH_STATE_TOUCH_MOVE:
-                if (mTouchState == TOUCH_STATE_NO_TOUCH || mTouchState == TOUCH_STATE_TOUCH_SNAP) {
-                    mSelectorAnimator.start();
-                }
-                break;
             case TOUCH_STATE_CLICK:
                 if (mTouchState == TOUCH_STATE_NO_TOUCH || mTouchState == TOUCH_STATE_TOUCH_SNAP) {
                     mSelectorAnimator.start();
                 }
+                break;
         }
 
         setTouchStateInternal(state);
@@ -1129,7 +1126,7 @@ public class LeanbackKeyboardContainer {
     public void onLangKeyPress() {
         switchToNextKeyboard();
 
-        showRunOnceDialog();
+//        showRunOnceDialog();
     }
 
     private void switchToNextKeyboard() {

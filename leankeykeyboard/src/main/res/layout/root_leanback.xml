@@ -1,24 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="bottom|center" android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@+id/root_ime"
-                android:background="@color/keyboard_background" android:paddingBottom="@dimen/keyboard_bottom_spacing" android:focusable="true"
-                android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-    <HorizontalScrollView android:gravity="center" android:id="@+id/suggestions_container" android:scrollbars="none" android:clipChildren="false"
-                          android:layout_width="wrap_content" android:layout_height="@dimen/key_height"
-                          android:layout_marginLeft="@dimen/candidate_scroll_view_horz_spacing"
-                          android:layout_marginRight="@dimen/candidate_scroll_view_horz_spacing" android:fillViewport="false"
-                          android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/suggestions" android:clipChildren="false"
-                      android:layout_width="wrap_content" android:layout_height="wrap_content" android:divider="@null" android:showDividers="middle"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_ime"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|center"
+    android:background="@color/keyboard_background"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:focusable="true"
+    android:gravity="bottom|center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/keyboard_bottom_spacing">
+
+    <HorizontalScrollView
+        android:id="@+id/suggestions_container"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/key_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/candidate_scroll_view_horz_spacing"
+        android:layout_marginRight="@dimen/candidate_scroll_view_horz_spacing"
+        android:clipChildren="false"
+        android:fillViewport="false"
+        android:gravity="center"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/suggestions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:divider="@null"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:showDividers="middle" />
     </HorizontalScrollView>
     <!-- NOTE: moved below HorizontalScrollView because some ids not generated yet -->
-    <View android:id="@+id/candidate_background" android:background="@color/candidate_background" android:layout_width="wrap_content"
-          android:layout_height="wrap_content" android:layout_alignBottom="@id/suggestions_container" android:layout_alignParentLeft="true"
-          android:layout_alignParentTop="true" android:layout_alignParentRight="true"/>
-    <LinearLayout android:gravity="center" android:id="@+id/keyboard" android:paddingTop="@dimen/keyboard_top_spacing" android:clipChildren="false"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/suggestions_container"
-                  android:layout_centerHorizontal="true">
-        <include layout="@layout/input_leanback"/>
+    <View
+        android:id="@+id/candidate_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/suggestions_container"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/candidate_background" />
+
+    <LinearLayout
+        android:id="@+id/keyboard"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/suggestions_container"
+        android:layout_centerHorizontal="true"
+        android:clipChildren="false"
+        android:gravity="center"
+        android:paddingTop="@dimen/keyboard_top_spacing">
+
+        <include layout="@layout/input_leanback" />
     </LinearLayout>
-    <include layout="@layout/selector"/>
+
+    <include layout="@layout/selector" />
 </RelativeLayout>

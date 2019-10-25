@@ -31,7 +31,7 @@ android {
 
             def newApkName = sprintf("%s_v%s_%s.apk", [project, version, buildType])
 
-            output.outputFile = new File(output.outputFile.parent, newApkName)
+            output.outputFileName = newApkName
         }
     }
 

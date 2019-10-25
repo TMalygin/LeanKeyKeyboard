@@ -3,17 +3,25 @@ package com.liskovsoft.keyboardaddons.reskbdfactory;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
 import com.liskovsoft.keyboardaddons.KeyboardInfo;
 import com.liskovsoft.leankeykeyboard.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ResKeyboardInfo implements KeyboardInfo {
     private static boolean sNeedUpdate;
     private boolean mEnabled;
     private String mLangCode;
     private String mLangName;
+
+    private static final Map<String, Boolean> DEFAULT_VALUE = new HashMap<String, Boolean>() {{
+        put("ru", true);
+        put("us", true);
+    }};
 
     public static List<KeyboardInfo> getAllKeyboardInfos(Context ctx) {
         List<KeyboardInfo> result = new ArrayList<>();
@@ -43,7 +51,12 @@ public class ResKeyboardInfo implements KeyboardInfo {
 
     private static void syncWithPrefs(Context ctx, KeyboardInfo info) {
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx);
-        final boolean kbdEnabled = sharedPreferences.getBoolean(info.getLangCode(), false);
+        Boolean defaultValue = DEFAULT_VALUE.get(info.getLangCode());
+        if (defaultValue == null) {
+            defaultValue = Boolean.FALSE;
+        }
+
+        final boolean kbdEnabled = sharedPreferences.getBoolean(info.getLangCode(), defaultValue);
         info.setEnabled(kbdEnabled);
     }
 
