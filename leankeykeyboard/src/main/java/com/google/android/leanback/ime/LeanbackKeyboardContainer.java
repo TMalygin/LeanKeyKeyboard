@@ -33,6 +33,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+
 import com.google.android.leanback.ime.voice.RecognizerView;
 import com.google.android.leanback.ime.voice.SpeechLevelSource;
 import com.google.leanback.ime.LeanbackImeService;
@@ -45,7 +46,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class LeanbackKeyboardContainer {
-    private static final boolean DEBUG = false;
     public static final double DIRECTION_STEP_MULTIPLIER = 1.25D;
     private static final String IME_PRIVATE_OPTIONS_ESCAPE_NORTH = "EscapeNorth=1";
     private static final String IME_PRIVATE_OPTIONS_VOICE_DISMISS = "VoiceDismiss=1";
@@ -209,7 +209,7 @@ public class LeanbackKeyboardContainer {
         });
         initKeyboards();
     }
-    
+
     private void configureFocus(LeanbackKeyboardContainer.KeyFocus focus, Rect rect, int index, int type) {
         focus.type = type;
         focus.index = index;
@@ -218,11 +218,12 @@ public class LeanbackKeyboardContainer {
 
     /**
      * Initialize {@link KeyFocus} with values
+     *
      * @param focus {@link KeyFocus} to configure
-     * @param rect {@link Rect}
+     * @param rect  {@link Rect}
      * @param index key index
-     * @param key {@link Key}
-     * @param type {@link KeyFocus#type} constant
+     * @param key   {@link Key}
+     * @param type  {@link KeyFocus#type} constant
      */
     private void configureFocus(LeanbackKeyboardContainer.KeyFocus focus, Rect rect, int index, Key key, int type) {
         focus.type = type;
@@ -294,8 +295,9 @@ public class LeanbackKeyboardContainer {
 
     /**
      * Move focus to specified key
+     *
      * @param index key index
-     * @param type {@link KeyFocus#type} constant
+     * @param type  {@link KeyFocus#type} constant
      */
     private void moveFocusToIndex(int index, int type) {
         Key key = this.mMainKeyboardView.getKey(index);
@@ -320,7 +322,8 @@ public class LeanbackKeyboardContainer {
      * Init currently displayed keyboard<br/>
      * Note: all keyboard settings applied here<br/>
      * Note: this method is called constantly on new field
-     * @param res resources (not used)
+     *
+     * @param res  resources (not used)
      * @param info current ime attributes
      */
     private void setImeOptions(Resources res, EditorInfo info) {
@@ -433,9 +436,10 @@ public class LeanbackKeyboardContainer {
 
     /**
      * Move focus to specified key
-     * @param focus key that will be focused
+     *
+     * @param focus            key that will be focused
      * @param forceFocusChange force focus
-     * @param animate animate transition
+     * @param animate          animate transition
      */
     private void setKbFocus(final LeanbackKeyboardContainer.KeyFocus focus, final boolean forceFocusChange, final boolean animate) {
         boolean clicked = true;
@@ -491,11 +495,12 @@ public class LeanbackKeyboardContainer {
 
     /**
      * Set keyboard shift sate
+     *
      * @param state one of the
-     * {@link LeanbackKeyboardView#SHIFT_ON SHIFT_ON},
-     * {@link LeanbackKeyboardView#SHIFT_OFF SHIFT_OFF},
-     * {@link LeanbackKeyboardView#SHIFT_LOCKED SHIFT_LOCKED}
-     * constants
+     *              {@link LeanbackKeyboardView#SHIFT_ON SHIFT_ON},
+     *              {@link LeanbackKeyboardView#SHIFT_OFF SHIFT_OFF},
+     *              {@link LeanbackKeyboardView#SHIFT_LOCKED SHIFT_LOCKED}
+     *              constants
      */
     private void setShiftState(int state) {
         mMainKeyboardView.setShiftState(state);
@@ -507,6 +512,7 @@ public class LeanbackKeyboardContainer {
 
     /**
      * Speech recognizer routine
+     *
      * @param context context
      */
     private void startRecognition(Context context) {
@@ -595,11 +601,11 @@ public class LeanbackKeyboardContainer {
             mSelector.setY(translatedY);
         } else {
             mSelector.animate()
-                     .x(translatedX)
-                     .y(translatedY)
-                     .setInterpolator(sMovementInterpolator)
-                     .setDuration(MOVEMENT_ANIMATION_DURATION)
-                     .start();
+                    .x(translatedX)
+                    .y(translatedY)
+                    .setInterpolator(sMovementInterpolator)
+                    .setDuration(MOVEMENT_ANIMATION_DURATION)
+                    .start();
         }
     }
 
@@ -628,8 +634,9 @@ public class LeanbackKeyboardContainer {
 
     /**
      * Initialize {@link KeyFocus focus} variable based on supplied coordinates
-     * @param x x coordinates
-     * @param y y coordinates
+     *
+     * @param x     x coordinates
+     * @param y     y coordinates
      * @param focus result focus
      * @return whether focus is found or not
      */
@@ -1076,6 +1083,7 @@ public class LeanbackKeyboardContainer {
 
     /**
      * Set touch state
+     *
      * @param state state e.g. {@link LeanbackKeyboardContainer#TOUCH_STATE_CLICK LeanbackKeyboardContainer.TOUCH_STATE_CLICK}
      */
     public void setTouchState(final int state) {
@@ -1297,9 +1305,9 @@ public class LeanbackKeyboardContainer {
                 mStartHeight = (float) mParams.height;
             } else {
                 setValues((mEndX - mStartX) * interpolatedTime + mStartX,
-                            (mEndY - mStartY) * interpolatedTime + mStartY,
-                            (float) ((int) ((mEndWidth - mStartWidth) * interpolatedTime + mStartWidth)),
-                            (float) ((int) ((mEndHeight - mStartHeight) * interpolatedTime + mStartHeight)));
+                        (mEndY - mStartY) * interpolatedTime + mStartY,
+                        (float) ((int) ((mEndWidth - mStartWidth) * interpolatedTime + mStartWidth)),
+                        (float) ((int) ((mEndHeight - mStartHeight) * interpolatedTime + mStartHeight)));
             }
         }
 
