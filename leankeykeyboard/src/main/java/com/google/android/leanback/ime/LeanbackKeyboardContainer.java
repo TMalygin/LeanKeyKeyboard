@@ -416,7 +416,7 @@ public class LeanbackKeyboardContainer {
         if (TextUtils.isEmpty(mEnterKeyText)) {
             switch (LeanbackUtils.getImeAction(info)) {
                 case EditorInfo.IME_ACTION_GO:
-                    mEnterKeyTextResId = R.string.label_go_key;
+                    mEnterKeyTextResId = R.string.label_ok_key;
                     return;
                 case EditorInfo.IME_ACTION_SEARCH:
                     mEnterKeyTextResId = R.string.label_search_key;

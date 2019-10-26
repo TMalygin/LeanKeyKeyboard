@@ -5,6 +5,7 @@
     <string name="word_separators">" .,;:!?
 ()[]*&amp;@{}/&lt;>_+=|"</string>
     <string name="label_go_key">Go</string>
+    <string translatable="false" name="label_ok_key">OK</string>
     <string name="label_next_key">Next</string>
     <string name="label_send_key">Send</string>
     <string name="label_search_key">Search</string>
