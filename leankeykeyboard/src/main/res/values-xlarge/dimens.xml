@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="key_height">42.0dip</dimen>
+    <dimen name="key_width">42.0dip</dimen>
+    <!--
+    NOTE: don't change space size unless you've setup constants here:
+    LeanbackKeyboardView.ASCII_PERIOD, LeanbackKeyboardView.ASCII_PERIOD_LEN
+    Old space width: 268.0dip
+    -->
+    <dimen name="space_key_width">345.0dip</dimen>
+    <dimen name="keyboard_horizontal_gap">18.0dip</dimen>
+    <dimen name="keyboard_vertical_gap">12.0dip</dimen>
+    <dimen name="recognizer_size">144.0dip</dimen>
+    <dimen name="selector_size">36.0dip</dimen>
+    <dimen name="keyboard_top_spacing">9.0dip</dimen>
+    <dimen name="keyboard_bottom_spacing">42.0dip</dimen>
+    <dimen name="action_button_size">96.0dip</dimen>
+    <dimen name="enter_key_height">48.0dip</dimen>
+    <dimen name="enter_key_font_size">27.0sp</dimen>
+    <dimen name="enter_key_padding_horizontal">14.0dip</dimen>
+    <dimen name="mode_change_key_font_size">12.0sp</dimen>
+    <dimen name="candidate_font_size">27.0sp</dimen>
+    <dimen name="candidate_padding_horizontal">24.0dip</dimen>
+    <dimen name="candidate_margin_horizontal">6.0dip</dimen>
+    <dimen name="candidate_height">42.0dip</dimen>
+    <dimen name="candidate_scroll_view_horz_spacing">84.0dip</dimen>
+    <dimen name="key_font_size">27.0sp</dimen>
+    <dimen name="function_key_mode_change_font_size">24.0sp</dimen>
+    <dimen name="resize_move_distance">18.0dip</dimen>
+    <dimen name="text_size_dp">22.5dp</dimen>
+    <dimen name="text_size_big_dp">37.5dp</dimen>
+</resources>
