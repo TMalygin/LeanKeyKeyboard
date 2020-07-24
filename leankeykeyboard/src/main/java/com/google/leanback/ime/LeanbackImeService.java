@@ -246,13 +246,14 @@ public class LeanbackImeService extends InputMethodService {
     }
 
     /**
+     * super.onEvaluateInputViewShown() checks having hardware keyboard
      * At this point, decision whether to show kbd taking place
      * @return whether to show kbd
      */
     @SuppressLint("MissingSuperCall")
     @Override
     public boolean onEvaluateInputViewShown() {
-        return mKeyboardController.showInputView();
+        return mKeyboardController.showInputView() && super.onEvaluateInputViewShown();
     }
 
     @Override
